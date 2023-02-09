@@ -1,0 +1,120 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<div id = "container">
+<h4 id="list-item-1">Autoservis</h4>
+  <div class="col-sm-6">
+  <label for="rokVyroby" class="form-label">Rok vyroby</label>
+  <input type="rokVyrobyText" class="form-control" id="rv" placeholder="2000" value="" required="">
+  <div class="invalid-feedback">
+    Valid first name is required.
+  </div>
+</div>
+
+<div class="col-sm-6">
+  <label for="model" class="form-label">Rok vyroby</label>
+  <input type="modelText" class="form-control" id="m" placeholder="model" value="" required="">
+  <div class="invalid-feedback">
+    Valid first name is required.
+  </div>
+</div>
+<div class="col-sm-6">
+  <label for="znacka" class="form-label">Rok vyroby</label>
+  <input type="ZnackaText" class="form-control" id="z" placeholder="znacka" value="" required="">
+  <div class="invalid-feedback">
+    Valid first name is required.
+  </div>
+</div>
+
+<div id = "buttons">
+<button type="button" id="addButton" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Přidání auta.
+</button>
+<button type="button" id="deleteButton" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Odebrání auta.
+</button>
+<button type="button"id="getdButton" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Výpis aut.
+</button>
+</div>
+</div>
+<script>
+
+    const addButton = document.getElementById('addButton');
+    const deleteButton = document.getElementById('deleteButton');
+    const getButton = document.getElementById('getButton');
+    const rv = document.getElementById('rv');
+    const m = document.getElementById('m');
+    const z = document.getElementById('z');
+
+  class Auto {
+constructor(rok, znacka,model) {
+this.rok = rok;
+this.znacka = znacka;
+this.model = model;
+}
+}
+  class Autoservis {
+constructor(auta) {
+this.auta = auta;
+}
+static GetAutoservis()
+{
+  foreach(auto in auta)
+  {
+    return auto;
+  }
+}
+
+static Addauto()
+{
+  Auto a = new Auto(rv.text,z.text,m.text);
+  auta.push(a);
+}
+static DeleteAuto()
+{
+  auta.foreach(element == auto)
+  {
+    auto.pop();
+  }
+}
+  }
+
+
+Autoservis autoservis = new AutoServis(auto);
+Autoservis autoservis = localStorage.getItem('localAutoservis');
+
+    addButton.onclick = function () {
+      Addauto();
+      localStorage.setItem('localAutoservis', autoservis);
+    }
+    deleteButton.onclick = function () {
+      DeleteAuto();
+      localStorage.setItem('localAutoservis', autoservis);
+    }
+
+    getButton.onclick = function () {
+      GetAutoservis();
+    }
+</script>
+<style>
+  #container
+  {
+    margin : auto;
+    width : 360px;
+  }
+  #list-item-1{
+    margin:auto;
+    width: 120px;
+  }
+  .col-sm-6{
+    margin:auto;
+  }
+  #buttons{
+    margin-top: 10px;
+  }
+</style>
